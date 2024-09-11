@@ -11,7 +11,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm ci --force
+      - run: npm i --force
 
   publish-npm:
     needs: build
@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
+      - run: npm i --force
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
